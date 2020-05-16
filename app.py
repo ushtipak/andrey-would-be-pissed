@@ -1,3 +1,7 @@
+"""
+Generate childlike Markov chain from given pattern
+"""
+
 import logging
 from sys import stdout
 
@@ -5,14 +9,14 @@ from numpy.random import choice as rnd
 
 
 def yield_pairs(_words):
+    """Generate two-word pairs from given list."""
     for i in range(len(_words) - 1):
         yield _words[i], _words[i + 1]
 
 
 def train(_words, _last):
+    """Return Markov chain word dictionary."""
     _field = {}
-    logging.warning("_last: %s", _last)
-
     for first, second in _words:
         if first in _field.keys():
             _field[first].append(second)
